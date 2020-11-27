@@ -34,6 +34,12 @@ class Comment(models.Model):
     object_id = models.PositiveIntegerField()
     createdAt = models.DateTimeField(auto_now=True, verbose_name='Created at')
 
+    @property
+    def get_parent(self):
+        if not self.parent:
+            return ''
+        return self.parent
+
     def __str__(self):
         return str(self.id)
 
